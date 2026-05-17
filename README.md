@@ -1,8 +1,26 @@
 # Knowledge Hub
 
+Upload your documents, ask away, and get grounded answers with citations.
+
 Knowledge Hub is a full stack retrieval augmented generation platform for internal document question answering.
 It combines a Next.js client, a Node.js application server, and a FastAPI based AI pipeline with document ingestion, retrieval, citation, and answer generation.
 Company identity and domain vocabulary are designed to be customized primarily through `config/company_profile.json`, while infrastructure and secrets remain environment based.
+
+## Product Preview
+
+<p align="center">
+  <img src="client/public/images/UI.jpeg" alt="Knowledge Hub question answering interface" width="900" />
+</p>
+
+The platform provides a focused Q and A workspace with conversation history, routed retrieval mode visibility, and grounded document answering over indexed private content.
+
+## RAG Workflow At A Glance
+
+<p align="center">
+  <img src="client/public/images/rag_1.jpg" alt="Knowledge Hub retrieval augmented generation workflow concept" width="900" />
+</p>
+
+Knowledge Hub is designed for document heavy environments where teams need to ingest large internal knowledge bases, retrieve the right evidence, and generate answers that remain tied to source material.
 
 ## Overview
 
@@ -29,7 +47,9 @@ The repository is organized as a monorepo with three main application layers:
 
 4. Company aware branding and vocabulary driven from shared configuration.
 
-5. Admin workflows for users, roles, monitoring, and operational visibility.
+5. Authentication, user management, and role based access control for enterprise deployments.
+
+6. Admin workflows for monitoring, operational visibility, and document governance.
 
 ## Multi Agent Pipeline
 
@@ -334,7 +354,9 @@ A standard local developer setup looks like this:
 
 2. The FastAPI service exposes AI and ingestion endpoints.
 
-3. The Node.js app mounts Swagger documentation at `/docs`.
+3. The platform includes authentication, user management, and role based access control flows in the application server and frontend admin surface.
+
+4. The Node.js app mounts Swagger documentation at `/docs`.
 
 ## Notes for Customization
 

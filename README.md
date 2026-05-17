@@ -22,6 +22,20 @@ The platform provides a focused Q and A workspace with conversation history, rou
 
 Knowledge Hub is designed for document heavy environments where teams need to ingest large internal knowledge bases, retrieve the right evidence, and generate answers that remain tied to source material.
 
+## Enterprise Administration
+
+<p align="center">
+  <img src="client/public/images/user-management.jpeg" alt="Knowledge Hub user management interface" width="900" />
+</p>
+
+The platform includes enterprise administration flows for managing users, reviewing account status, and assigning application roles across operational teams.
+
+<p align="center">
+  <img src="client/public/images/permission-matrix.jpeg" alt="Knowledge Hub role based access control permission matrix" width="900" />
+</p>
+
+Role based access control is built into the product with a permission matrix that supports granular access policies for documents, Q and A, administration, and other protected system capabilities.
+
 ## Overview
 
 Knowledge Hub is built for teams that need grounded answers from private operational documents instead of generic chatbot output. The system ingests business content, indexes it for retrieval, and produces answers that stay tied to source material.

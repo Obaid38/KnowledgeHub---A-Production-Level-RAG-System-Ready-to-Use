@@ -1,0 +1,46 @@
+# -- Web framework ------------------------------------------------------------
+fastapi==0.135.2
+uvicorn[standard]==0.42.0
+python-multipart==0.0.22
+httpx==0.28.1
+
+# -- Async task queue ---------------------------------------------------------
+celery==5.6.2
+redis==7.4.0
+
+# -- Object storage -----------------------------------------------------------
+boto3==1.42.75
+
+# -- Vector database ----------------------------------------------------------
+qdrant-client==1.17.1
+
+# -- BM25 sparse embeddings (hybrid search) -----------------------------------
+# Provides Qdrant/bm25 sparse model used by ai/ingestion/bm25_embedder.py.
+# Only loaded at runtime when HYBRID_SEARCH_ENABLED=true.
+fastembed>=0.4.0
+
+# -- Embeddings - local CPU (sentence-transformers) ---------------------------
+sentence-transformers==5.3.0
+torch==2.11.0         # CPU-only; RunPod uses CUDA-enabled torch from Ollama
+transformers==5.3.0
+einops                # required by nomic-ai/nomic-embed-text-v1 custom model code
+
+# -- PDF extraction -----------------------------------------------------------
+pymupdf==1.27.2.2
+pdfplumber==0.11.9
+pytesseract==0.3.13
+Pillow==12.1.1
+
+# -- Office document extraction -----------------------------------------------
+python-docx==1.2.0
+python-pptx==1.0.2
+openpyxl==3.1.5
+
+# -- Chunking -----------------------------------------------------------------
+llama-index-core==0.14.18
+
+# -- Config + utilities -------------------------------------------------------
+python-dotenv==1.2.2
+pydantic==2.12.5
+pydantic-settings==2.13.1
+PyYAML>=6.0

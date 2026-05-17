@@ -1,0 +1,493 @@
+{
+  "common": {
+    "or": "Or",
+    "backToDashboard": "Back to dashboard"
+  },
+  "nav": {
+    "mainMenu": "Menu",
+    "othersMenu": "Others",
+    "dashboard": "Dashboard",
+    "ecommerce": "Ecommerce",
+    "userProfile": "User Profile",
+    "documents": "Documents",
+    "roles": "Roles & Permissions",
+    "userManagement": "User Management",
+    "qa": "Q&A",
+    "systemMonitoring": "System Monitoring",
+    "tables": "Tables",
+    "basicTables": "Basic Tables",
+    "pages": "Pages",
+    "blankPage": "Blank Page",
+    "error404": "404 Error",
+    "charts": "Charts",
+    "lineChart": "Line Chart",
+    "barChart": "Bar Chart",
+    "uiElements": "UI Elements",
+    "alerts": "Alerts",
+    "avatar": "Avatar",
+    "badge": "Badge",
+    "buttons": "Buttons",
+    "images": "Images",
+    "videos": "Videos",
+    "authentication": "Authentication",
+    "signIn": "Sign In",
+    "signUp": "Sign Up"
+  },
+  "sidebar": {
+    "widgetTitle": "#1 Tailwind CSS Dashboard",
+    "widgetDescription": "Leading Tailwind CSS Admin Template with 400+ UI Component and Pages.",
+    "widgetCta": "Upgrade To Pro"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "subtitle": "Welcome back, Admin. Here is what is happening today.",
+    "metrics": {
+      "totalDocuments": "Total Documents",
+      "totalDocumentsChange": "+{count} this week",
+      "aiQueries": "AI Queries Today",
+      "aiQueriesChange": "+{pct}% vs yesterday",
+      "processing": "Processing",
+      "processingSubtitle": "Documents in queue",
+      "confidenceScore": "Avg. Confidence Score",
+      "confidenceScoreChange": "+{pct}% this month"
+    },
+    "queryVolume": {
+      "title": "Query Volume",
+      "subtitle": "Document and query activity over time",
+      "documents": "Documents",
+      "queries": "Queries",
+      "daily": "Daily",
+      "weekly": "Weekly",
+      "monthly": "Monthly"
+    },
+    "activityFeed": {
+      "title": "Activity Feed",
+      "chat": "Chat",
+      "items": {
+        "pdfUploaded": "{filename} uploaded",
+        "qaQuery": "Q&A: \"{question}\"",
+        "processingComplete": "Document processing completed ({count} files)",
+        "knowledgeGraph": "Knowledge Graph updated +{count} nodes",
+        "emailSync": "Email sync completed: {email}"
+      }
+    },
+    "recentQueries": {
+      "title": "Recent Queries",
+      "viewAll": "View All",
+      "columns": {
+        "question": "Question",
+        "type": "Type",
+        "time": "Time"
+      },
+      "types": {
+        "retrieval": "Retrieval",
+        "semantic": "Semantic",
+        "keyword": "Keyword",
+        "hybrid": "Hybrid"
+      }
+    }
+  },
+  "documents": {
+    "title": "Document Management",
+    "subtitle": "Upload, process, and search your enterprise documents.",
+    "uploadZone": {
+      "clickToUpload": "Click to upload",
+      "dragAndDrop": "or drag and drop files here",
+      "hint": "PDF, DOCX, PPTX, XLSX, PNG, JPG · Max 50MB per file",
+      "uploading": "Uploading..."
+    },
+    "table": {
+      "allDocuments": "All Documents",
+      "searchPlaceholder": "Search documents...",
+      "allStatus": "All Status",
+      "allCategories": "All Categories",
+      "columns": {
+        "filename": "Filename",
+        "type": "Type",
+        "size": "Size",
+        "source": "Source",
+        "category": "Category",
+        "status": "Status",
+        "uploaded": "Uploaded",
+        "actions": "Actions"
+      },
+      "noDocuments": "No documents found.",
+      "showing": "Showing",
+      "of": "of",
+      "documentsCount": "documents",
+      "rows": "Rows:",
+      "assign": "— Assign",
+      "preview": "Preview",
+      "delete": "Delete"
+    },
+    "bulkActions": {
+      "deleteSelected": "Delete ({count})",
+      "updateCategory": "Set Category ({count})",
+      "selectCategory": "Select category...",
+      "apply": "Apply",
+      "applying": "Applying..."
+    },
+    "uploadModal": {
+      "title": "Upload Documents",
+      "subtitle": "{count} file selected. Assign a category before uploading.",
+      "subtitlePlural": "{count} files selected. Assign a category before uploading.",
+      "categoryLabel": "Document Category",
+      "categoryOptional": "(optional)",
+      "categoryPlaceholder": "Select a category…",
+      "cancel": "Cancel",
+      "upload": "Upload"
+    },
+    "deleteModal": {
+      "title": "Delete {count} document?",
+      "titlePlural": "Delete {count} documents?",
+      "message": "This action cannot be undone. The selected document will be permanently removed from the server.",
+      "messagePlural": "This action cannot be undone. The selected documents will be permanently removed from the server.",
+      "cancel": "Cancel",
+      "confirm": "Delete"
+    },
+    "categories": {
+      "SOP": "SOP",
+      "Incident": "Incident",
+      "Policy": "Policy",
+      "Report": "Report",
+      "Other": "Other"
+    },
+    "status": {
+      "Completed": "Completed",
+      "Processing": "Processing",
+      "Failed": "Failed",
+      "Pending": "Pending"
+    }
+  },
+  "qa": {
+    "title": "AI-Powered Q&A Engine",
+    "subtitle": "Ask questions about your documents in plain English.",
+    "sidebar": {
+      "recentQueries": "Recent Queries",
+      "newChat": "New conversation",
+      "noConversations": "No conversations yet",
+      "confidence": "Confidence: {value}%"
+    },
+    "chat": {
+      "askQuestion": "Ask a Question",
+      "you": "You",
+      "justNow": "Just now",
+      "thinking": "Thinking…",
+      "emptyTitle": "Ask about your documents",
+      "emptySubtitle": "Ask questions in plain English. The AI will search your indexed documents and return precise answers.",
+      "tryAsking": "Try asking…",
+      "inputPlaceholder": "Ask a question about your documents…",
+      "pressEnter": "Press",
+      "toSend": "to send ·",
+      "shiftEnter": "Shift+Enter",
+      "forNewLine": "for new line",
+      "selectCategories": "Select categories"
+    },
+    "feedback": {
+      "helpful": "Helpful",
+      "notHelpful": "Not Helpful",
+      "regenerate": "Regenerate"
+    },
+    "router": {
+      "ragMode": "RAG Mode",
+      "hybridRouter": "Hybrid Router Active",
+      "directMode": "Direct Mode"
+    }
+  },
+  "auth": {
+    "signIn": {
+      "title": "Sign In",
+      "subtitle": "Enter your email and password to sign in!",
+      "withGoogle": "Sign in with Google",
+      "withX": "Sign in with X",
+      "emailLabel": "Email",
+      "emailPlaceholder": "info@gmail.com",
+      "passwordLabel": "Password",
+      "passwordPlaceholder": "Enter your password",
+      "keepLoggedIn": "Keep me logged in",
+      "forgotPassword": "Forgot password?",
+      "signInBtn": "Sign in",
+      "noAccount": "Don't have an account?",
+      "signUpLink": "Sign Up"
+    },
+    "signUp": {
+      "title": "Sign Up",
+      "subtitle": "Enter your email and password to sign up!",
+      "withGoogle": "Sign up with Google",
+      "withX": "Sign up with X",
+      "firstNameLabel": "First Name",
+      "firstNamePlaceholder": "Enter your first name",
+      "lastNameLabel": "Last Name",
+      "lastNamePlaceholder": "Enter your last name",
+      "emailLabel": "Email",
+      "emailPlaceholder": "Enter your email",
+      "passwordLabel": "Password",
+      "passwordPlaceholder": "Enter your password",
+      "agreeText": "By creating an account means you agree to the",
+      "termsLink": "Terms and Conditions",
+      "andText": ", and our",
+      "privacyLink": "Privacy Policy",
+      "signUpBtn": "Sign Up",
+      "haveAccount": "Already have an account?",
+      "signInLink": "Sign In"
+    },
+    "forgotPassword": {
+      "backToLogin": "Back to Login",
+      "title": "Forgot Password?",
+      "subtitle": "Enter your email address and we'll send you a link to reset your password",
+      "emailLabel": "Email Address",
+      "emailPlaceholder": "Enter your email address",
+      "sendBtn": "Send Reset Link",
+      "sendingBtn": "Sending reset link...",
+      "successMessage": "Password reset link has been sent to your email. Please check your inbox and follow the instructions.",
+      "rememberPassword": "Remember your password?",
+      "signInLink": "Sign In"
+    },
+    "resetPassword": {
+      "backToLogin": "Back to Login",
+      "title": "Reset Password",
+      "subtitle": "Enter your new password below",
+      "newPasswordLabel": "New Password",
+      "newPasswordPlaceholder": "Enter your new password",
+      "confirmPasswordLabel": "Confirm Password",
+      "confirmPasswordPlaceholder": "Re-enter your password",
+      "resetBtn": "Reset Password",
+      "resettingBtn": "Resetting password...",
+      "successMessage": "Your password has been reset successfully. Redirecting to login...",
+      "invalidToken": "Invalid or missing reset token. Please request a new password reset link.",
+      "expiredToken": "The password reset link has expired or is invalid.",
+      "requestNewLink": "Request New Reset Link",
+      "rememberPassword": "Remember your password?",
+      "signInLink": "Sign In"
+    },
+    "mfa": {
+      "title": "Two-Factor Authentication",
+      "subtitle": "Enter the 6-digit code from your authenticator app",
+      "signingInAs": "Signing in as",
+      "codeRefreshesIn": "Code refreshes in",
+      "verifyBtn": "Verify Code",
+      "verifyingBtn": "Verifying...",
+      "orUseRecovery": "or use a recovery code",
+      "useRecoveryBtn": "Use a recovery code instead",
+      "recoveryTitle": "Recovery Code",
+      "recoverySubtitle": "Enter one of your saved recovery codes",
+      "recoveryLabel": "Recovery Code",
+      "recoveryPlaceholder": "xxxx-xxxx-xxxx",
+      "verifyRecoveryBtn": "Verify Recovery Code",
+      "backToAuthenticator": "Back to authenticator",
+      "backToLogin": "Back to Login"
+    }
+  },
+  "errors": {
+    "notFound": {
+      "heading": "ERROR",
+      "message": "We can't seem to find the page you are looking for!",
+      "backHome": "Back to Home Page"
+    }
+  },
+  "language": {
+    "label": "Language",
+    "en": "EN",
+    "ko": "한국어"
+  },
+  "header": {
+    "searchPlaceholder": "Search or type command...",
+    "toggleSidebar": "Toggle Sidebar"
+  },
+  "userDropdown": {
+    "name": "Musharof Chowdhury",
+    "email": "randomuser@pimjo.com",
+    "editProfile": "Edit profile",
+    "accountSettings": "Account settings",
+    "support": "Support",
+    "signOut": "Sign out"
+  },
+  "notifications": {
+    "title": "Notifications",
+    "markAllRead": "Mark all as read",
+    "viewAll": "View all notifications",
+    "msg1Time": "2 min ago",
+    "msg1Text": "Musharof sent you a message",
+    "msg2Time": "1 hour ago",
+    "msg2Text": "Your order has been placed",
+    "msg3Time": "Just now",
+    "msg3Text": "You have a new notification"
+  },  "users": {
+    "title": "User Management",
+    "subtitle": "View and manage all registered users.",
+    "filters": {
+      "all": "All",
+      "verified": "Verified",
+      "unverified": "Unverified"
+    },
+    "table": {
+      "columns": {
+        "sn": "S/N",
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "email": "Email",
+        "role": "Role",
+        "verified": "Verified",
+        "createdAt": "Created At",
+        "actions": "Actions"
+      },
+      "verified": "Verified",
+      "unverified": "Unverified",
+      "approve": "Approve",
+      "reject": "Reject",
+      "editRole": "Edit Role",
+      "delete": "Delete",
+      "noUsers": "No users found."
+    }
+  },
+  "rbac": {
+    "title":    "Role-Based Access Control",
+    "subtitle": "80+ granular permissions across 4 system roles.",
+
+    "metrics": {
+      "systemRoles":        "System Roles",
+      "permissionsDefined": "Permissions Defined",
+      "activeUsers":        "Active Users",
+      "customRoles":        "Custom Roles"
+    },
+
+    "roles": {
+      "admin":   "Admin",
+      "manager": "Manager",
+      "user":    "User",
+      "custom":  "Custom"
+    },
+
+    "matrix": {
+      "title":       "Permission Matrix",
+      "hint":        "Click a cell to toggle",
+      "category":    "Category",
+      "saveChanges": "Save Changes",
+      "saving":      "Saving…",
+      "discard":     "Discard"
+    },
+
+    "actions": {
+      "view":   "View",
+      "create": "Create",
+      "edit":   "Edit",
+      "delete": "Delete"
+    },
+
+    "toast": {
+      "saveSuccess": "Permissions saved successfully.",
+      "saveError":   "Failed to save permissions. Please try again.",
+      "discarded":   "Changes discarded."
+    }
+  }
+,  "monitoring": {
+    "title": "System Monitoring",
+    "subtitle": "Real-time service health, performance metrics, and audit logging.",
+    "serviceHealth": {
+      "title": "Service Health",
+      "refresh": "Refresh"
+    },
+    "performance": {
+      "title": "Performance Metrics",
+      "withinTargets": "Within targets"
+    }
+  },
+ "profile": {
+    "title": "Profile",
+    "meta": {
+      "title": "Edit Personal Information",
+      "subtitle": "Update your details to keep your profile up-to-date.",
+      "editButton": "Edit",
+      "socialLinks": "Social Links",
+      "facebook": "Facebook",
+      "twitter": "X.com",
+      "linkedin": "Linkedin",
+      "instagram": "Instagram",
+      "close": "Close",
+      "saveChanges": "Save Changes"
+    },
+    "info": {
+      "title": "Personal Information",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email address",
+      "phone": "Phone",
+      "bio": "Bio",
+      "editButton": "Edit",
+      "modalTitle": "Edit Personal Information",
+      "modalSubtitle": "Update your details to keep your profile up-to-date.",
+      "close": "Close",
+      "saveChanges": "Save Changes"
+    },
+    "password": {
+      "title": "Change Password",
+      "subtitle": "Use a strong password of at least 12 characters",
+      "currentPassword": "Current Password",
+      "newPassword": "New Password",
+      "confirmPassword": "Confirm Password",
+      "updateButton": "Update Password",
+      "updating": "Updating…",
+      "successMessage": "Password updated successfully.",
+      "serverError": "Something went wrong. Please try again.",
+      "validation": {
+        "currentRequired": "Current password is required.",
+        "newRequired": "New password is required.",
+        "confirmRequired": "Please confirm your new password.",
+        "minLength": "Password must be at least 8 characters.",
+        "mismatch": "Passwords do not match.",
+        "sameAsCurrent": "New password must differ from current password.",
+        "passwordHint": "At least 8 characters"
+      }
+    },
+    "mfa": {
+      "title": "Two-Factor Authentication (TOTP)",
+      "subtitle": "Adds a second layer of security using your authenticator app. Mandatory for Admin and Manager roles.",
+      "statusEnabled": "Enabled",
+      "statusDisabled": "Not Enabled",
+      "disabledMessage": "Two-factor authentication has been disabled.",
+      "disableError": "Failed to disable MFA. Please try again.",
+      "steps": {
+        "step1Title": "Click Enable MFA below.",
+        "step1Sub": "Your server will generate a unique secret key.",
+        "step2Title": "Scan the QR code with FreeOTP, Aegis, or Google Authenticator.",
+        "step2Sub": "Use your phone's authenticator app to scan the code.",
+        "step3Title": "Enter the 6-digit code to confirm setup.",
+        "step3Sub": "Your 10 recovery codes will be shown once.",
+        "step4Title": "From now on, every login requires your 6-digit code.",
+        "step4Sub": "Codes change every 30 seconds. No internet needed."
+      },
+      "enableButton": "Enable Two-Factor Authentication",
+      "disableButton": "Disable Two-Factor Authentication",
+      "disabling": "Disabling…",
+      "modal": {
+        "title": "Set up authenticator",
+        "subtitle": "Scan the QR code with your app then enter the 6-digit code to confirm.",
+        "cantScan": "Can't scan? Click to reveal the secret key.",
+        "hideSecret": "Hide secret key",
+        "secretLabel": "Enter this key manually in your authenticator app",
+        "copy": "Copy",
+        "copied": "Copied!",
+        "codeLabel": "Verification code",
+        "codePlaceholder": "000000",
+        "cancel": "Cancel",
+        "verifyButton": "Verify & Enable",
+        "verifying": "Verifying…",
+        "codeError": "Enter a 6-digit code.",
+        "successMessage": "Two-factor authentication enabled successfully.",
+        "setupError": "Failed to generate QR code. Please try again.",
+        "verifyError": "Invalid code. Please try again.",
+        "codesTitle": "Save your recovery codes",
+        "codesSubtitle": "These codes let you access your account if you lose your authenticator app.",
+        "codesWarning": "These codes will never be shown again. Store them somewhere safe — a password manager, printed paper, or encrypted file. Each code can only be used once.",
+        "codesNote": "You have 10 recovery codes. Each one works only once. If you run low, regenerate them from your profile settings.",
+        "copyAll": "Copy all codes",
+        "download": "Download as .txt",
+        "done": "I have saved my codes",
+        "codesCount": "{count} codes remaining",
+        "codesConfirmLabel": "I have saved my recovery codes in a safe place and understand each code can only be used once.",
+        "downloaded": "Downloaded",
+        "doneHint": "Check the box above to confirm you have saved your codes."
+      }
+    }
+  }
+}

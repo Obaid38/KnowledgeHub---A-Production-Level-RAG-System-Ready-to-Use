@@ -1,0 +1,754 @@
+openapi: 3.0.3
+info:
+  title: API
+  version: 1.0.0
+  description: Auto-generated from Postman collection.
+servers:
+  - url: http://localhost:7000/api/v1
+  - url: https://hdrgolyeopietw-80.proxy.runpod.net/api/v1
+    description: Base URL
+tags:
+  - name: auth
+  - name: user
+  - name: workflow
+  - name: warehouse
+  - name: dock
+  - name: camera
+  - name: system
+  - name: alerts
+  - name: workflow-step
+  - name: shipment
+paths:
+  /auth/login:
+    post:
+      operationId: auth__post__auth_login
+      summary: login
+      tags:
+        - auth
+      parameters: []
+      responses:
+        "200":
+          description: OK
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: superadmin@xyz.com
+                password:
+                  type: string
+                  example: dewdrops123
+  /auth/verify-otp:
+    post:
+      operationId: auth__post__auth_verify_otp
+      summary: verify-otp
+      tags:
+        - auth
+      parameters: []
+      responses:
+        "200":
+          description: OK
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: superadmin@xyz.com
+                otp:
+                  type: string
+                  example: "133830"
+  /auth/resend-otp:
+    post:
+      operationId: auth__post__auth_resend_otp
+      summary: resed-otp
+      tags:
+        - auth
+      parameters: []
+      responses:
+        "200":
+          description: OK
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: superadmin@xyz.com
+  /auth/verify-account:
+    post:
+      operationId: auth__post__auth_verify_account
+      summary: verify-accout
+      tags:
+        - auth
+      parameters: []
+      responses:
+        "200":
+          description: OK
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: harham034@gmail.com
+                status:
+                  type: string
+                  example: "1"
+      security:
+        - bearerAuth: []
+  /auth/register:
+    post:
+      operationId: auth__post__auth_register
+      summary: register
+      tags:
+        - auth
+      parameters: []
+      responses:
+        "200":
+          description: OK
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                first_name:
+                  type: string
+                  example: "{{$randomFirstName}}"
+                last_name:
+                  type: string
+                  example: "{{$randomLastName}}"
+                email:
+                  type: string
+                  example: "{{$randomEmail}}"
+                password:
+                  type: string
+                  example: dewdrops123
+                role:
+                  type: string
+                  example: user
+      security:
+        - bearerAuth: []
+  /auth/forgot-password:
+    post:
+      operationId: auth__post__auth_forgot_password
+      summary: forgot-password
+      tags:
+        - auth
+      parameters: []
+      responses:
+        "200":
+          description: OK
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: superadmin@xyz.com
+      security:
+        - bearerAuth: []
+  /auth/reset-password:
+    post:
+      operationId: auth__post__auth_reset_password
+      summary: reset-password
+      tags:
+        - auth
+      parameters: []
+      responses:
+        "200":
+          description: OK
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: string
+                  example: 5b48a5cb81fa1b3fbf2d078fb5d67ee29f8960e69056ed6682b26a106eafb17d
+                new_password:
+                  type: string
+                  example: dewdrops123
+      security:
+        - bearerAuth: []
+  /auth/change-password:
+    post:
+      operationId: auth__post__auth_change_password
+      summary: change-password
+      tags:
+        - auth
+      parameters: []
+      responses:
+        "200":
+          description: OK
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                current_password:
+                  type: string
+                  example: dewdrops
+                new_password:
+                  type: string
+                  example: dewdrops123
+      security:
+        - bearerAuth: []
+  /user:
+    get:
+      operationId: user__get__user
+      summary: users
+      tags:
+        - user
+      parameters: []
+      responses:
+        "200":
+          description: OK
+      security:
+        - bearerAuth: []
+    put:
+      operationId: user__put__user
+      summary: update
+      tags:
+        - user
+      parameters: []
+      responses:
+        "200":
+          description: OK
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                first_name:
+                  type: string
+                  example: super
+                last_name:
+                  type: string
+                  example: admin
+      security:
+        - bearerAuth: []
+  /user/profile:
+    get:
+      operationId: user__get__user_profile
+      summary: profile
+      tags:
+        - user
+      parameters: []
+      responses:
+        "200":
+          description: OK
+      security:
+        - bearerAuth: []
+  /workflow:
+    get:
+      operationId: workflow__get__workflow
+      summary: get
+      tags:
+        - workflow
+      parameters:
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: integer
+          example: "1"
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+          example: "10"
+        - name: status
+          in: query
+          required: false
+          schema:
+            type: string
+          example: active
+        - name: current_step
+          in: query
+          required: false
+          schema:
+            type: integer
+          example: "1"
+      responses:
+        "200":
+          description: OK
+      security:
+        - bearerAuth: []
+    post:
+      operationId: workflow__post__workflow
+      summary: step-07
+      tags:
+        - workflow
+      parameters: []
+      responses:
+        "200":
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+            example:
+              camera_id: dock-cam-3
+              step_no: "7"
+              step_name: Loading Complete
+              status: completed
+              payload:
+                success: true
+                data:
+                  trailer_number: TRL4455
+                  loading_status: COMPLETE
+                  manifest_id: MNF0099
+                  packing_list_id: PL-2024-10-001
+                  completion_time: "2025-09-19T10:06:00Z"
+                  seal_number: SEAL-123456
+                  carrier_info:
+                    driver: Janmes
+                    company: Example Company
+                  ocr_accuracy: 0.9833992380783654
+                  ocr_processing_time: 220ms
+                  start_time: "2025-09-16T06:16:26.000Z"
+                  end_time: "2025-09-16T06:16:56.000Z"
+      security:
+        - bearerAuth: []
+  /workflow/68db7058ea6efbb7f319238c:
+    get:
+      operationId: workflow__get__workflow_68db7058ea6efbb7f319238c
+      summary: get-by-id
+      tags:
+        - workflow
+      parameters: []
+      responses:
+        "200":
+          description: OK
+      security:
+        - bearerAuth: []
+  /workflow/stats:
+    get:
+      operationId: workflow__get__workflow_stats
+      summary: stats
+      tags:
+        - workflow
+      parameters: []
+      responses:
+        "200":
+          description: OK
+      security:
+        - bearerAuth: []
+  /workflow/metrics:
+    get:
+      operationId: workflow__get__workflow_metrics
+      summary: metrics
+      tags:
+        - workflow
+      parameters: []
+      responses:
+        "200":
+          description: OK
+      security:
+        - bearerAuth: []
+  /workflow/report:
+    get:
+      operationId: workflow__get__workflow_report
+      summary: performance-report
+      tags:
+        - workflow
+      parameters:
+        - name: period
+          in: query
+          required: false
+          schema:
+            type: string
+          example: 30d
+      responses:
+        "200":
+          description: OK
+      security:
+        - bearerAuth: []
+  /warehouse:
+    post:
+      operationId: warehouse__post__warehouse
+      summary: create
+      tags:
+        - warehouse
+      parameters: []
+      responses:
+        "200":
+          description: OK
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                warehouse_number:
+                  type: string
+                  example: WH-008
+                location:
+                  type: string
+                  example: USA
+      security:
+        - bearerAuth: []
+    get:
+      operationId: warehouse__get__warehouse
+      summary: get
+      tags:
+        - warehouse
+      parameters: []
+      responses:
+        "200":
+          description: OK
+      security:
+        - bearerAuth: []
+  /warehouse/68ddfec8530ef4de9d82905d:
+    put:
+      operationId: warehouse__put__warehouse_68ddfec8530ef4de9d82905d
+      summary: update
+      tags:
+        - warehouse
+      parameters: []
+      responses:
+        "200":
+          description: OK
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                warehouse_number:
+                  type: string
+                  example: WHS123
+                location:
+                  type: string
+                  example: USA
+      security:
+        - bearerAuth: []
+  /warehouse/68e37b7e5694aabddf8d594c:
+    delete:
+      operationId: warehouse__delete__warehouse_68e37b7e5694aabddf8d594c
+      summary: delete
+      tags:
+        - warehouse
+      parameters: []
+      responses:
+        "200":
+          description: OK
+      security:
+        - bearerAuth: []
+  /dock:
+    post:
+      operationId: dock__post__dock
+      summary: create
+      tags:
+        - dock
+      parameters: []
+      responses:
+        "200":
+          description: OK
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                dock_number:
+                  type: string
+                  example: DC-078
+                warehouse_id:
+                  type: string
+                  example: 68d4d8b718c4b9ca799dd2cf
+      security:
+        - bearerAuth: []
+    get:
+      operationId: dock__get__dock
+      summary: get
+      tags:
+        - dock
+      parameters: []
+      responses:
+        "200":
+          description: OK
+      security:
+        - bearerAuth: []
+  /dock/68e37bf75694aabddf8d5959:
+    put:
+      operationId: dock__put__dock_68e37bf75694aabddf8d5959
+      summary: update
+      tags:
+        - dock
+      parameters: []
+      responses:
+        "200":
+          description: OK
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                dock_number:
+                  type: string
+                  example: DC-078
+                warehouse_id:
+                  type: string
+                  example: 68d4d8b718c4b9ca799dd2cf
+      security:
+        - bearerAuth: []
+    delete:
+      operationId: dock__delete__dock_68e37bf75694aabddf8d5959
+      summary: delete
+      tags:
+        - dock
+      parameters: []
+      responses:
+        "200":
+          description: OK
+      security:
+        - bearerAuth: []
+  /camera:
+    post:
+      operationId: camera__post__camera
+      summary: create
+      tags:
+        - camera
+      parameters: []
+      responses:
+        "200":
+          description: OK
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                camera_id:
+                  type: string
+                  example: dock-cam-01
+                camera_name:
+                  type: string
+                  example: CAM-001
+                dock_id:
+                  type: string
+                  example: 68d4d94118c4b9ca799dd2de
+      security:
+        - bearerAuth: []
+    get:
+      operationId: camera__get__camera
+      summary: get
+      tags:
+        - camera
+      parameters: []
+      responses:
+        "200":
+          description: OK
+      security:
+        - bearerAuth: []
+  /camera/68d4d9fa18c4b9ca799dd2ed:
+    put:
+      operationId: camera__put__camera_68d4d9fa18c4b9ca799dd2ed
+      summary: update
+      tags:
+        - camera
+      parameters: []
+      responses:
+        "200":
+          description: OK
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                camera_id:
+                  type: string
+                  example: dock-cam-078
+                camera_name:
+                  type: string
+                  example: cam-078
+                dock_id:
+                  type: string
+                  example: 68d4d94118c4b9ca799dd2de
+      security:
+        - bearerAuth: []
+    delete:
+      operationId: camera__delete__camera_68d4d9fa18c4b9ca799dd2ed
+      summary: delete
+      tags:
+        - camera
+      parameters: []
+      responses:
+        "200":
+          description: OK
+      security:
+        - bearerAuth: []
+  /system/status:
+    get:
+      operationId: system__get__system_status
+      summary: status
+      tags:
+        - system
+      parameters: []
+      responses:
+        "200":
+          description: OK
+      security:
+        - bearerAuth: []
+  /system/info:
+    get:
+      operationId: system__get__system_info
+      summary: info
+      tags:
+        - system
+      parameters: []
+      responses:
+        "200":
+          description: OK
+      security:
+        - bearerAuth: []
+  /alert:
+    get:
+      operationId: alerts__get__alert
+      summary: get
+      tags:
+        - alerts
+      parameters: []
+      responses:
+        "200":
+          description: OK
+      security:
+        - bearerAuth: []
+  /workflow-step/68db705aea6efbb7f319239d:
+    get:
+      operationId: workflow-step__get__workflow_step_68db705aea6efbb7f319239d
+      summary: get-by-id
+      tags:
+        - workflow-step
+      parameters: []
+      responses:
+        "200":
+          description: OK
+      security:
+        - bearerAuth: []
+  /shipment/68dcb60d325698e286a66f08:
+    get:
+      operationId: shipment__get__shipment_68dcb60d325698e286a66f08
+      summary: get-by-workflowId
+      tags:
+        - shipment
+      parameters:
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: integer
+          example: "1"
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+          example: "10"
+        - name: status
+          in: query
+          required: false
+          schema:
+            type: string
+          example: completed
+        - name: sort_by
+          in: query
+          required: false
+          schema:
+            type: string
+          example: shipment_id
+        - name: search
+          in: query
+          required: false
+          schema:
+            type: string
+          example: electronics
+      responses:
+        "200":
+          description: OK
+      security:
+        - bearerAuth: []
+  /shipment/68dba32cf0865f11c4701e63:
+    delete:
+      operationId: shipment__delete__shipment_68dba32cf0865f11c4701e63
+      summary: delete
+      tags:
+        - shipment
+      parameters: []
+      responses:
+        "200":
+          description: OK
+      security:
+        - bearerAuth: []
+  /shipment/68dcb611325698e286a66f1f:
+    put:
+      operationId: shipment__put__shipment_68dcb611325698e286a66f1f
+      summary: update
+      tags:
+        - shipment
+      parameters: []
+      responses:
+        "200":
+          description: OK
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                shipment_number:
+                  type: string
+                  example: SHP-1758168182661-020
+                delivery_info:
+                  type: string
+                  example: DL-2024-002@warehouse.com
+                material_type:
+                  type: string
+                  example: electronics
+                status:
+                  type: string
+                  example: completed
+                total_weight:
+                  type: string
+                  example: "99"
+                total_pallets:
+                  type: string
+                  example: "23"
+      security:
+        - bearerAuth: []
+  /:
+    get:
+      operationId: api__get__root
+      summary: health
+      tags: []
+      parameters: []
+      responses:
+        "200":
+          description: OK
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

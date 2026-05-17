@@ -1,0 +1,498 @@
+{
+  "common": {
+    "or": "또는",
+    "backToDashboard": "대시보드로 돌아가기"
+  },
+  "nav": {
+    "mainMenu": "메뉴",
+    "othersMenu": "기타",
+    "dashboard": "대시보드",
+    "ecommerce": "이커머스",
+    "userProfile": "사용자 프로필",
+    "documents": "문서",
+    "roles": "역할 및 권한",
+    "userManagement": "사용자 관리",
+    "qa": "질의응답",
+    "systemMonitoring": "시스템 모니터링",
+    "tables": "테이블",
+    "basicTables": "기본 테이블",
+    "pages": "페이지",
+    "blankPage": "빈 페이지",
+    "error404": "404 오류",
+    "charts": "차트",
+    "lineChart": "선형 차트",
+    "barChart": "막대 차트",
+    "uiElements": "UI 요소",
+    "alerts": "알림",
+    "avatar": "아바타",
+    "badge": "배지",
+    "buttons": "버튼",
+    "images": "이미지",
+    "videos": "동영상",
+    "authentication": "인증",
+    "signIn": "로그인",
+    "signUp": "회원가입"
+  },
+  "sidebar": {
+    "widgetTitle": "#1 Tailwind CSS 대시보드",
+    "widgetDescription": "400개 이상의 UI 컴포넌트와 페이지를 갖춘 Tailwind CSS 관리자 템플릿.",
+    "widgetCta": "프로로 업그레이드"
+  },
+  
+  "dashboard": {
+    "title": "대시보드",
+    "subtitle": "환영합니다, 관리자님. 오늘의 현황입니다.",
+    "metrics": {
+      "totalDocuments": "총 문서 수",
+      "totalDocumentsChange": "이번 주 +{count}건",
+      "aiQueries": "오늘 AI 질의 수",
+      "aiQueriesChange": "어제 대비 +{pct}%",
+      "processing": "처리 중",
+      "processingSubtitle": "대기 중인 문서",
+      "confidenceScore": "평균 신뢰도 점수",
+      "confidenceScoreChange": "이번 달 +{pct}%"
+    },
+    "queryVolume": {
+      "title": "쿼리 볼륨",
+      "subtitle": "시간대별 문서 및 쿼리 활동",
+      "documents": "문서",
+      "queries": "쿼리",
+      "daily": "일별",
+      "weekly": "주별",
+      "monthly": "월별"
+    },
+    "activityFeed": {
+      "title": "활동 피드",
+      "chat": "채팅",
+      "items": {
+        "pdfUploaded": "{filename} 업로드됨",
+        "qaQuery": "Q&A: \"{question}\"",
+        "processingComplete": "문서 처리 완료 ({count}개 파일)",
+        "knowledgeGraph": "지식 그래프 업데이트 +{count}개 노드",
+        "emailSync": "이메일 동기화 완료: {email}"
+      }
+    },
+    "recentQueries": {
+      "title": "최근 쿼리",
+      "viewAll": "전체 보기",
+      "columns": {
+        "question": "질문",
+        "type": "유형",
+        "time": "시간"
+      },
+      "types": {
+        "retrieval": "검색",
+        "semantic": "의미론적",
+        "keyword": "키워드",
+        "hybrid": "하이브리드"
+      }
+    }
+},
+  "documents": {
+    "title": "문서 관리",
+    "subtitle": "기업 문서를 업로드하고 처리하며 검색하세요.",
+    "uploadZone": {
+      "clickToUpload": "클릭하여 업로드",
+      "dragAndDrop": "또는 여기에 파일을 드래그 앤 드롭하세요",
+      "hint": "PDF, DOCX, PPTX, XLSX, PNG, JPG · 파일당 최대 50MB",
+      "uploading": "업로드 중..."
+    },
+    "table": {
+      "allDocuments": "모든 문서",
+      "searchPlaceholder": "문서 검색...",
+      "allStatus": "모든 상태",
+      "allCategories": "모든 카테고리",
+      "columns": {
+        "filename": "파일명",
+        "type": "유형",
+        "size": "크기",
+        "source": "출처",
+        "category": "카테고리",
+        "status": "상태",
+        "uploaded": "업로드",
+        "actions": "작업"
+      },
+      "noDocuments": "문서를 찾을 수 없습니다.",
+      "showing": "표시 중",
+      "of": "/",
+      "documentsCount": "문서",
+      "rows": "행:",
+      "assign": "— 지정",
+      "preview": "미리보기",
+      "delete": "삭제"
+    },
+    "bulkActions": {
+      "deleteSelected": "삭제 ({count})",
+      "updateCategory": "카테고리 설정 ({count})",
+      "selectCategory": "카테고리 선택...",
+      "apply": "적용",
+      "applying": "적용 중..."
+    },
+    "uploadModal": {
+      "title": "문서 업로드",
+      "subtitle": "파일 {count}개 선택됨. 업로드 전에 카테고리를 지정하세요.",
+      "subtitlePlural": "파일 {count}개 선택됨. 업로드 전에 카테고리를 지정하세요.",
+      "categoryLabel": "문서 카테고리",
+      "categoryOptional": "(선택사항)",
+      "categoryPlaceholder": "카테고리 선택…",
+      "cancel": "취소",
+      "upload": "업로드"
+    },
+    "deleteModal": {
+      "title": "문서 {count}개를 삭제하시겠습니까?",
+      "titlePlural": "문서 {count}개를 삭제하시겠습니까?",
+      "message": "이 작업은 취소할 수 없습니다. 선택한 문서가 서버에서 영구적으로 삭제됩니다.",
+      "messagePlural": "이 작업은 취소할 수 없습니다. 선택한 문서들이 서버에서 영구적으로 삭제됩니다.",
+      "cancel": "취소",
+      "confirm": "삭제"
+    },
+    "categories": {
+      "SOP": "표준운영절차",
+      "Incident": "사고",
+      "Policy": "정책",
+      "Report": "보고서",
+      "Other": "기타"
+    },
+    "status": {
+      "Completed": "완료",
+      "Processing": "처리 중",
+      "Failed": "실패",
+      "Pending": "대기 중"
+    }
+  },
+  "qa": {
+    "title": "AI 기반 Q&A 엔진",
+    "subtitle": "일반 영어로 문서에 대한 질문을 하세요.",
+    "sidebar": {
+      "recentQueries": "최근 쿼리",
+      "newChat": "새 대화",
+      "noConversations": "아직 대화가 없습니다",
+      "confidence": "신뢰도: {value}%"
+    },
+    "chat": {
+      "askQuestion": "질문하기",
+      "you": "나",
+      "justNow": "방금",
+      "thinking": "생각 중…",
+      "emptyTitle": "문서에 대해 질문하세요",
+      "emptySubtitle": "일반 언어로 질문하세요. AI가 인덱싱된 문서를 검색하여 정확한 답변을 제공합니다.",
+      "tryAsking": "이렇게 질문해 보세요…",
+      "inputPlaceholder": "문서에 대한 질문을 입력하세요…",
+      "pressEnter": "누르세요",
+      "toSend": "전송 ·",
+      "shiftEnter": "Shift+Enter",
+      "forNewLine": "줄 바꿈",
+      "selectCategories": "카테고리 선택"
+    },
+    "feedback": {
+      "helpful": "도움됨",
+      "notHelpful": "도움 안 됨",
+      "regenerate": "재생성"
+    },
+    "router": {
+      "ragMode": "RAG 모드",
+      "hybridRouter": "하이브리드 라우터 활성",
+      "directMode": "직접 모드"
+    },
+    "suggestedPrompts": {
+    "q3Revenue": "SOP-02에 따라 운송 중 도난 사건이 보고되었을 때 따라야 할 단계는 무엇입니까?",
+    "acmeDeliveries": "팀은 행방불명 화물 또는 배송 불가 화물을 어떻게 처리해야 합니까?",
+    "supplierPolicy": "화물 부족 클레임 검토, RA 제출 및 클레임 해결의 일정은 어떻게 됩니까?",
+    "safetySOp": "SOP에서의 에스컬레이션 단계는 무엇이며, 각 단계는 언제 시작되어야 합니까?",
+    "contracts": "도난 사고 클레임 패키지를 위해 어떤 정보를 수집해야 합니까?",
+    "walmart": "월마트 부족 건에 서로 다른 DO와 PO에 걸친 3개의 전량 부족 인보이스가 포함되어 있습니다. 이를 개별 클레임으로 처리해야 합니까, 아니면 일괄 처리해야 합니까? 또한 언제 에스컬레이션해야 합니까?",
+    "terminalDockCheckWorkflow": "운송업체가 화물이 터미널에 있으며 내일 업무 종료 시(EOD)까지 도크 체크를 진행하겠다고 합니다. 마감일, 리마인더 및 클레임 경고 워크플로를 구축하십시오."
+  }
+  },
+
+  "auth": {
+    "signIn": {
+      "title": "로그인",
+      "subtitle": "이메일과 비밀번호를 입력하여 로그인하세요!",
+      "withGoogle": "Google로 로그인",
+      "withX": "X로 로그인",
+      "emailLabel": "이메일",
+      "emailPlaceholder": "info@gmail.com",
+      "passwordLabel": "비밀번호",
+      "passwordPlaceholder": "비밀번호를 입력하세요",
+      "keepLoggedIn": "로그인 상태 유지",
+      "forgotPassword": "비밀번호를 잊으셨나요?",
+      "signInBtn": "로그인",
+      "noAccount": "계정이 없으신가요?",
+      "signUpLink": "회원가입"
+    },
+    "signUp": {
+      "title": "회원가입",
+      "subtitle": "이메일과 비밀번호를 입력하여 회원가입하세요!",
+      "withGoogle": "Google로 회원가입",
+      "withX": "X로 회원가입",
+      "firstNameLabel": "이름",
+      "firstNamePlaceholder": "이름을 입력하세요",
+      "lastNameLabel": "성",
+      "lastNamePlaceholder": "성을 입력하세요",
+      "emailLabel": "이메일",
+      "emailPlaceholder": "이메일을 입력하세요",
+      "passwordLabel": "비밀번호",
+      "passwordPlaceholder": "비밀번호를 입력하세요",
+      "agreeText": "계정 생성 시 다음에 동의하게 됩니다",
+      "termsLink": "이용약관",
+      "andText": " 및",
+      "privacyLink": "개인정보 처리방침",
+      "signUpBtn": "회원가입",
+      "haveAccount": "이미 계정이 있으신가요?",
+      "signInLink": "로그인"
+    },
+    "forgotPassword": {
+      "backToLogin": "로그인으로 돌아가기",
+      "title": "비밀번호를 잊으셨나요?",
+      "subtitle": "이메일 주소를 입력하시면 비밀번호 재설정 링크를 보내드립니다",
+      "emailLabel": "이메일 주소",
+      "emailPlaceholder": "이메일 주소를 입력하세요",
+      "sendBtn": "재설정 링크 보내기",
+      "sendingBtn": "재설정 링크 전송 중...",
+      "successMessage": "비밀번호 재설정 링크가 이메일로 전송되었습니다. 받은편지함을 확인하고 안내에 따라 진행하세요.",
+      "rememberPassword": "비밀번호가 기억나시나요?",
+      "signInLink": "로그인"
+    },
+    "resetPassword": {
+      "backToLogin": "로그인으로 돌아가기",
+      "title": "비밀번호 재설정",
+      "subtitle": "새 비밀번호를 입력하세요",
+      "newPasswordLabel": "새 비밀번호",
+      "newPasswordPlaceholder": "새 비밀번호를 입력하세요",
+      "confirmPasswordLabel": "비밀번호 확인",
+      "confirmPasswordPlaceholder": "비밀번호를 다시 입력하세요",
+      "resetBtn": "비밀번호 재설정",
+      "resettingBtn": "비밀번호 재설정 중...",
+      "successMessage": "비밀번호가 성공적으로 재설정되었습니다. 로그인 페이지로 이동합니다...",
+      "invalidToken": "유효하지 않거나 누락된 재설정 토큰입니다. 새 비밀번호 재설정 링크를 요청하세요.",
+      "expiredToken": "비밀번호 재설정 링크가 만료되었거나 유효하지 않습니다.",
+      "requestNewLink": "새 재설정 링크 요청",
+      "rememberPassword": "비밀번호가 기억나시나요?",
+      "signInLink": "로그인"
+    },
+    "mfa": {
+      "title": "이중 인증",
+      "subtitle": "인증 앱에서 6자리 코드를 입력하세요",
+      "signingInAs": "로그인 계정",
+      "codeRefreshesIn": "코드 갱신까지",
+      "verifyBtn": "코드 확인",
+      "verifyingBtn": "확인 중...",
+      "orUseRecovery": "또는 복구 코드 사용",
+      "useRecoveryBtn": "복구 코드로 대신 사용하기",
+      "recoveryTitle": "복구 코드",
+      "recoverySubtitle": "저장된 복구 코드 중 하나를 입력하세요",
+      "recoveryLabel": "복구 코드",
+      "recoveryPlaceholder": "xxxx-xxxx-xxxx",
+      "verifyRecoveryBtn": "복구 코드 확인",
+      "backToAuthenticator": "인증 앱으로 돌아가기",
+      "backToLogin": "로그인으로 돌아가기"
+    }
+  },
+  "errors": {
+    "notFound": {
+      "heading": "오류",
+      "message": "찾으시는 페이지를 찾을 수 없습니다!",
+      "backHome": "홈으로 돌아가기"
+    }
+  },
+  "language": {
+    "label": "언어",
+    "en": "EN",
+    "ko": "한국어"
+  },
+  "header": {
+    "searchPlaceholder": "검색 또는 명령어 입력...",
+    "toggleSidebar": "사이드바 전환"
+  },
+  "userDropdown": {
+    "name": "Musharof Chowdhury",
+    "email": "randomuser@pimjo.com",
+    "editProfile": "프로필 편집",
+    "accountSettings": "계정 설정",
+    "support": "지원",
+    "signOut": "로그아웃"
+  },
+  "notifications": {
+    "title": "알림",
+    "markAllRead": "모두 읽음 표시",
+    "viewAll": "모든 알림 보기",
+    "msg1Time": "2분 전",
+    "msg1Text": "Musharof님이 메시지를 보냈습니다",
+    "msg2Time": "1시간 전",
+    "msg2Text": "주문이 완료되었습니다",
+    "msg3Time": "방금",
+    "msg3Text": "새 알림이 있습니다"
+  },
+   "users": {
+    "title": "사용자 관리",
+    "subtitle": "등록된 모든 사용자를 조회하고 관리하세요.",
+    "filters": {
+      "all": "전체",
+      "verified": "인증됨",
+      "unverified": "미인증"
+    },
+    "table": {
+      "columns": {
+        "sn": "번호",
+        "firstName": "이름",
+        "lastName": "성",
+        "email": "이메일",
+        "role": "역할",
+        "verified": "인증 여부",
+        "createdAt": "생성일",
+        "actions": "작업"
+      },
+      "verified": "인증됨",
+      "unverified": "미인증",
+      "approve": "승인",
+      "reject": "거절",
+      "editRole": "역할 변경",
+      "delete": "삭제",
+      "noUsers": "사용자를 찾을 수 없습니다."
+    }
+  },
+  "rbac": {
+    "title": "역할 기반 접근 제어",
+    "subtitle": "4개의 시스템 역할에 걸쳐 80개 이상의 세분화된 권한.",
+    "metrics": {
+      "systemRoles": "시스템 역할",
+      "permissionsDefined": "정의된 권한",
+      "activeUsers": "활성 사용자",
+      "customRoles": "사용자 정의 역할"
+    },
+    "roles": {
+      "admin": "관리자",
+      "manager": "매니저",
+      "user": "사용자",
+      "custom": "사용자 정의"
+    },
+    "matrix": {
+      "title": "권한 매트릭스",
+      "hint": "셀을 클릭하여 토글",
+      "category": "카테고리",
+      "saveChanges": "변경 사항 저장",
+      "saving": "저장 중…",
+      "discard": "되돌리기"
+    },
+    "actions": {
+      "view": "보기",
+      "create": "생성",
+      "edit": "편집",
+      "delete": "삭제"
+    },
+    "toast": {
+      "saveSuccess": "권한이 성공적으로 저장되었습니다.",
+      "saveError": "권한 저장에 실패했습니다. 다시 시도해주세요.",
+      "discarded": "변경 사항이 취소되었습니다."
+    }
+  },"monitoring": {
+    "title": "시스템 모니터링",
+    "subtitle": "실시간 서비스 상태, 성능 지표 및 감사 로그.",
+    "serviceHealth": {
+      "title": "서비스 상태",
+      "refresh": "새로고침"
+    },
+    "performance": {
+      "title": "성능 지표",
+      "withinTargets": "목표 내"
+    }
+  }, "profile": {
+    "title": "프로필",
+    "meta": {
+      "title": "개인 정보 수정",
+      "subtitle": "프로필을 최신 상태로 유지하려면 정보를 업데이트하세요.",
+      "editButton": "편집",
+      "socialLinks": "소셜 링크",
+      "facebook": "페이스북",
+      "twitter": "X.com",
+      "linkedin": "링크드인",
+      "instagram": "인스타그램",
+      "close": "닫기",
+      "saveChanges": "변경사항 저장"
+    },
+    "info": {
+      "title": "개인 정보",
+      "firstName": "이름",
+      "lastName": "성",
+      "email": "이메일 주소",
+      "phone": "전화번호",
+      "bio": "소개",
+      "editButton": "편집",
+      "modalTitle": "개인 정보 수정",
+      "modalSubtitle": "프로필을 최신 상태로 유지하려면 정보를 업데이트하세요.",
+      "close": "닫기",
+      "saveChanges": "변경사항 저장"
+    },
+    "password": {
+      "title": "비밀번호 변경",
+      "subtitle": "최소 12자 이상의 강력한 비밀번호를 사용하세요",
+      "currentPassword": "현재 비밀번호",
+      "newPassword": "새 비밀번호",
+      "confirmPassword": "비밀번호 확인",
+      "updateButton": "비밀번호 업데이트",
+      "updating": "업데이트 중…",
+      "successMessage": "비밀번호가 성공적으로 변경되었습니다.",
+      "serverError": "오류가 발생했습니다. 다시 시도해 주세요.",
+      "validation": {
+        "currentRequired": "현재 비밀번호를 입력해 주세요.",
+        "newRequired": "새 비밀번호를 입력해 주세요.",
+        "confirmRequired": "새 비밀번호를 다시 입력해 주세요.",
+        "minLength": "비밀번호는 최소 8자 이상이어야 합니다.",
+        "mismatch": "비밀번호가 일치하지 않습니다.",
+        "sameAsCurrent": "새 비밀번호는 현재 비밀번호와 달라야 합니다.",
+        "passwordHint": "최소 8자 이상"
+      }
+    },
+    "mfa": {
+      "title": "이중 인증 (TOTP)",
+      "subtitle": "인증 앱을 사용하여 두 번째 보안 레이어를 추가합니다. 관리자 및 매니저 역할에 필수입니다.",
+      "statusEnabled": "활성화됨",
+      "statusDisabled": "비활성화됨",
+      "disabledMessage": "이중 인증이 비활성화되었습니다.",
+      "disableError": "MFA 비활성화에 실패했습니다. 다시 시도해 주세요.",
+      "steps": {
+        "step1Title": "아래의 MFA 활성화 버튼을 클릭하세요.",
+        "step1Sub": "서버에서 고유한 비밀 키를 생성합니다.",
+        "step2Title": "FreeOTP, Aegis 또는 Google Authenticator로 QR 코드를 스캔하세요.",
+        "step2Sub": "휴대폰의 인증 앱을 사용하여 코드를 스캔하세요.",
+        "step3Title": "6자리 코드를 입력하여 설정을 확인하세요.",
+        "step3Sub": "10개의 복구 코드가 한 번만 표시됩니다.",
+        "step4Title": "이제부터 모든 로그인에 6자리 코드가 필요합니다.",
+        "step4Sub": "코드는 30초마다 변경됩니다. 인터넷 연결이 필요하지 않습니다."
+      },
+      "enableButton": "이중 인증 활성화",
+      "disableButton": "이중 인증 비활성화",
+      "disabling": "비활성화 중…",
+      "modal": {
+        "title": "인증 앱 설정",
+        "subtitle": "앱으로 QR 코드를 스캔한 후 6자리 코드를 입력하여 확인하세요.",
+        "cantScan": "스캔이 안 되나요? 클릭하여 비밀 키를 확인하세요.",
+        "hideSecret": "비밀 키 숨기기",
+        "secretLabel": "인증 앱에 이 키를 직접 입력하세요",
+        "copy": "복사",
+        "copied": "복사됨!",
+        "codeLabel": "인증 코드",
+        "codePlaceholder": "000000",
+        "cancel": "취소",
+        "verifyButton": "확인 및 활성화",
+        "verifying": "확인 중…",
+        "codeError": "6자리 코드를 입력해 주세요.",
+        "successMessage": "이중 인증이 성공적으로 활성화되었습니다.",
+        "setupError": "QR 코드 생성에 실패했습니다. 다시 시도해 주세요.",
+        "verifyError": "잘못된 코드입니다. 다시 시도해 주세요.",
+        "codesTitle": "복구 코드를 저장하세요",
+        "codesSubtitle": "인증 앱을 분실했을 때 이 코드로 계정에 접근할 수 있습니다.",
+        "codesWarning": "이 코드는 다시 표시되지 않습니다. 비밀번호 관리자, 인쇄물, 또는 암호화된 파일 등 안전한 곳에 보관하세요. 각 코드는 한 번만 사용할 수 있습니다.",
+        "codesNote": "복구 코드가 10개 있습니다. 각 코드는 한 번만 사용 가능합니다. 코드가 부족해지면 프로필 설정에서 재발급하세요.",
+        "copyAll": "모든 코드 복사",
+        "download": ".txt로 다운로드",
+        "done": "코드를 저장했습니다",
+        "codesCount": "남은 코드: {count}개",
+        "codesConfirmLabel": "복구 코드를 안전한 곳에 저장했으며, 각 코드는 한 번만 사용 가능함을 이해했습니다.",
+        "downloaded": "다운로드됨",
+        "doneHint": "위의 확인란을 체크하여 코드를 저장했음을 확인해 주세요."
+      }
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{{> _header}}
+
+<div style="max-width: 600px; margin: 0 auto; padding: 20px; font-family: Arial, sans-serif;">
+  <h2 style="color: #333; text-align: center;">Login Verification</h2>
+  
+  <p style="color: #666; font-size: 16px; line-height: 1.5;">
+    Hello {{name}},
+  </p>
+  
+  <p style="color: #666; font-size: 16px; line-height: 1.5;">
+    You're attempting to log in to your account. Please use the following One-Time Password (OTP) to complete your login:
+  </p>
+  
+  <div style="background-color: #f8f9fa; border: 2px solid #e9ecef; border-radius: 8px; padding: 20px; text-align: center; margin: 20px 0;">
+    <h1 style="color: #007bff; font-size: 32px; font-weight: bold; letter-spacing: 4px; margin: 0;">
+      {{otp}}
+    </h1>
+  </div>
+  
+  <p style="color: #666; font-size: 14px; line-height: 1.5;">
+    <strong>Important:</strong>
+  </p>
+  <ul style="color: #666; font-size: 14px; line-height: 1.5;">
+    <li>This OTP is valid for 2 minutes only</li>
+    <li>Do not share this OTP with anyone</li>
+    <li>If you didn't request this login, please ignore this email</li>
+  </ul>
+  
+  <p style="color: #666; font-size: 16px; line-height: 1.5;">
+    If you have any concerns about your account security, please contact our support team immediately.
+  </p>
+</div>
+
+{{> _footer}}

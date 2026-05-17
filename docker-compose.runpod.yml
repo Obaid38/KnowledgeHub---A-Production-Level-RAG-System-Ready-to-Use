@@ -1,0 +1,166 @@
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Generic app — Full Stack (RunPod A100)
+#
+# Usage (from InsightHub/ directory):
+#   cp .env.runpod .env                          # fill in REPLACE_WITH_* first
+#   docker compose -f docker-compose.runpod.yml up -d --build
+#
+# After the stack is up, pull Ollama models (first boot only):
+#   docker compose -f docker-compose.runpod.yml exec ollama ollama pull nomic-embed-text
+#   docker compose -f docker-compose.runpod.yml exec ollama ollama pull llama3.1:8b
+#   docker compose -f docker-compose.runpod.yml exec ollama ollama pull qwen3:32b
+#
+# Then update ai_server/ai/agents/config/agents.yml model_name fields to the
+# RunPod swap values noted in the comments inside that file, and restart:
+#   docker compose -f docker-compose.runpod.yml restart api worker
+#
+# Ports exposed (map to RunPod proxy URLs in your pod's Ports tab):
+#   3000  → Next.js client
+#   7000  → Node.js API
+#   8000  → FastAPI AI server
+#   9000  → MinIO (S3-compatible object storage)
+#   9001  → MinIO console
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+services:
+
+  # ── Infrastructure ──────────────────────────────────────────────────────────
+
+  mongo:
+    image: mongo:7
+    restart: always
+    volumes:
+      - mongodata:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    restart: always
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      retries: 5
+
+  qdrant:
+    image: qdrant/qdrant:v1.12.0
+    restart: always
+    volumes:
+      - qdrantdata:/qdrant/storage
+
+  minio:
+    image: minio/minio:latest
+    restart: always
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ACCESS_KEY}
+      MINIO_ROOT_PASSWORD: ${MINIO_SECRET_KEY}
+    volumes:
+      - miniodata:/data
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+
+  # Ollama runs on the full A100 (count: all).
+  # Models are stored in /workspace/ollama — RunPod's persistent network volume.
+  # This survives pod stops/restarts so models are never re-downloaded.
+  # Pull models after first boot — see usage notes at the top of this file.
+  ollama:
+    image: ollama/ollama:latest
+    restart: always
+    volumes:
+      - /workspace/ollama:/root/.ollama
+    ports:
+      - "11434:11434"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sf http://localhost:11434/api/version || exit 1"]
+      interval: 10s
+      retries: 10
+      start_period: 30s
+
+  # ── AI Server (FastAPI + Celery) ────────────────────────────────────────────
+
+  api:
+    build:
+      context: ./ai_server
+      dockerfile: Dockerfile
+    restart: always
+    env_file: .env
+    ports:
+      - "8000:8000"
+    depends_on:
+      redis:    { condition: service_healthy }
+      qdrant:   { condition: service_started }
+      minio:    { condition: service_started }
+      ollama:   { condition: service_healthy }
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000
+
+  # Celery worker — gets GPU access for the reranker (sentence-transformers).
+  # Embedding inference goes to Ollama so this worker mainly needs GPU for
+  # RERANKER_ENABLED=true paths.
+  worker:
+    build:
+      context: ./ai_server
+      dockerfile: Dockerfile
+    restart: always
+    env_file: .env
+    depends_on:
+      redis:    { condition: service_healthy }
+      ollama:   { condition: service_healthy }
+    command: celery -A app.celery_app worker --loglevel=info -Q document_processing,embeddings -c 2
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+  # ── Node.js Backend ─────────────────────────────────────────────────────────
+
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    restart: always
+    env_file: .env
+    ports:
+      - "7000:7000"
+    depends_on:
+      mongo: { condition: service_healthy }
+      redis: { condition: service_healthy }
+      minio: { condition: service_started }
+
+  # ── Next.js Frontend ────────────────────────────────────────────────────────
+
+  # NEXT_PUBLIC_API_URL is baked into the JS bundle at build time.
+  # Set it to your RunPod port-7000 proxy URL in .env before running.
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL}
+        NEXT_PUBLIC_APP_NAME: ${NEXT_PUBLIC_APP_NAME:-Insight Hub}
+    restart: always
+    ports:
+      - "3000:3000"
+    depends_on:
+      - server
+
+volumes:
+  mongodata:
+  qdrantdata:
+  miniodata:
+  # ollama models use a bind mount to /workspace/ollama (see ollama service above)
+  # so no named volume is needed here.

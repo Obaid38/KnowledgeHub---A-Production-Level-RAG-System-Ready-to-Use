@@ -1,0 +1,114 @@
+services:
+
+  # ─── Infrastructure ──────────────────────────────────────────────────────────
+
+  mongo:
+    image: mongo:7
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodata:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      retries: 5
+
+  qdrant:
+    image: qdrant/qdrant:v1.12.0
+    restart: unless-stopped
+    ports:
+      - "6333:6333"
+      - "6334:6334"
+    volumes:
+      - qdrantdata:/qdrant/storage
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sf http://localhost:6333/readyz || exit 1"]
+      interval: 10s
+      retries: 5
+
+  minio:
+    image: minio/minio:latest
+    restart: unless-stopped
+    command: server /data --console-address ":9001"
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+    volumes:
+      - miniodata:/data
+    healthcheck:
+      test: ["CMD", "curl", "-sf", "http://localhost:9000/minio/health/live"]
+      interval: 10s
+      retries: 5
+
+  # ─── Backend ─────────────────────────────────────────────────────────────────
+
+  server:
+    build:
+      context: ../server
+    restart: unless-stopped
+    ports:
+      - "7000:7000"
+    environment:
+      NODE_ENV: production
+      PORT: 7000
+      MONGO_URI: mongodb://mongo:27017/insight-hub
+      REDIS_URL: redis://redis:6379
+      JWT_SECRET: change_me_in_production
+      JWT_EXPIRES_IN: 7d
+      MFA_JWT_SECRET: mfa_change_me_in_production
+      MINIO_ENDPOINT: minio
+      MINIO_PORT: 9000
+      MINIO_USE_SSL: "false"
+      MINIO_ACCESS_KEY: minioadmin
+      MINIO_SECRET_KEY: minioadmin
+      MINIO_BUCKET: insight-hub-docs
+      MINIO_PUBLIC_ENDPOINT: http://localhost:9000
+      CLIENT_URL: http://localhost:3000
+      CORS_ALLOWED_ORIGINS: http://localhost:3000
+      AI_SERVICE_URL: http://host.docker.internal:8000
+      AI_INGEST_URL: http://host.docker.internal:8000
+      SMTP_HOST: sandbox.smtp.mailtrap.io
+      SMTP_PORT: 2525
+      SMTP_USER: ""
+      SMTP_PASS: ""
+    depends_on:
+      mongo:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      minio:
+        condition: service_healthy
+
+  # ─── Frontend ────────────────────────────────────────────────────────────────
+
+  client:
+    build:
+      context: ../client
+      args:
+        NEXT_PUBLIC_API_URL: http://localhost:7000/api/v1
+        NEXT_PUBLIC_APP_NAME: Insight Hub
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    depends_on:
+      - server
+
+volumes:
+  mongodata:
+  qdrantdata:
+  miniodata:

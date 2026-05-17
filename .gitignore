@@ -1,0 +1,26 @@
+node_modules/
+
+# Root level environment files
+/.env
+/.env.*
+
+# AI server environment files
+ai_server/.env
+ai_server/.env.local
+ai_server/.env.runpod
+ai_server/__pycache__/
+ai_server/**/__pycache__/
+ai_server/**/*.pyc
+ai_server/**/*.pyo
+ai_server/.pytest_cache/
+ai_server/ai/models/
+ai_server/alembic/versions/*.py
+!ai_server/alembic/versions/.gitkeep
+
+# Local documents, debug output, and temporary uploads
+ai_server/debug_output/
+server/uploads_temp/
+
+# Exclude internal docs from the public repository
+docs/
+ai_server/docs/

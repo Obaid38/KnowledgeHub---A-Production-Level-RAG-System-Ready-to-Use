@@ -1,0 +1,124 @@
+{
+  "brand": {
+    "app_name": "Knowledge Hub",
+    "app_tagline": "Document Intelligence Platform",
+    "product_description": "Ask grounded questions across your indexed documents.",
+    "logo_light_path": "/images/logo/logo.svg",
+    "logo_dark_path": "/images/logo/logo-dark.svg",
+    "favicon_path": "/favicon.ico"
+  },
+  "company": {
+    "legal_name": "Example Operations Inc.",
+    "short_name": "ExampleOps",
+    "aliases": [
+      "Example Operations",
+      "ExampleOps"
+    ],
+    "knowledge_base_label": "company knowledge base",
+    "domain_summary": "The organization uses this platform to search internal operating procedures, policies, contracts, role guidance, and historical operational records."
+  },
+  "domain": {
+    "teams": [
+      "Operations",
+      "Customer Support",
+      "Finance",
+      "Logistics"
+    ],
+    "systems": [
+      "ERP",
+      "TMS",
+      "Claims Portal"
+    ],
+    "customers": [
+      "Customer A",
+      "Customer B"
+    ],
+    "carriers": [
+      "Carrier A",
+      "Carrier B"
+    ],
+    "warehouse_partners": [
+      "Warehouse Partner A",
+      "Warehouse Partner B"
+    ],
+    "abbreviations": [
+      "BOL: Bill of Lading - shipment contract and primary shipping document issued by the carrier",
+      "POD: Proof of Delivery - signed document confirming delivery was made",
+      "RA: Return Authorization - approval required before returned product is routed",
+      "GR: Goods Receipt - system confirmation that goods were received",
+      "GI: Goods Issue - system confirmation that goods were dispatched"
+    ],
+    "strong_in_terms": [
+      "freight",
+      "claim",
+      "shortage",
+      "theft",
+      "invoice",
+      "return authorization",
+      "bol",
+      "pod",
+      "ra",
+      "gr",
+      "gi",
+      "sop",
+      "sla",
+      "debit memo",
+      "short pay"
+    ],
+    "generic_domain_terms": [
+      "logistics",
+      "carrier",
+      "shipment",
+      "warehouse",
+      "cargo",
+      "procedure",
+      "policy",
+      "document",
+      "workflow",
+      "process",
+      "compliance",
+      "timeline",
+      "approval",
+      "guideline",
+      "authorization"
+    ],
+    "faithfulness_entities": [
+      "Carrier A",
+      "Carrier B",
+      "Customer A",
+      "Customer B"
+    ],
+    "cleaner_known_customers": [
+      "Customer A",
+      "Customer B"
+    ],
+    "cleaner_known_carriers": [
+      "Carrier A",
+      "Carrier B",
+      "DHL",
+      "FedEx",
+      "UPS"
+    ]
+  },
+  "qa": {
+    "suggested_prompts": [
+      "What steps should be followed when an in-transit theft incident is reported?",
+      "How should the team handle undeliverable freight or astray freight?",
+      "What is the timeline for claim review, approval, and resolution?",
+      "What escalation levels exist in the SOP and when should each be triggered?",
+      "What information must be collected for an incident claim package?",
+      "Should multiple shortage invoices be processed individually or as a batch?",
+      "Build the deadline, reminder, and claim-warning workflow for a delayed carrier response."
+    ],
+    "no_result_message": "I was unable to find relevant information in the company knowledge base to answer your question. Please try rephrasing your question."
+  },
+  "contact": {
+    "support_email": "support@exampleops.test",
+    "no_reply_email": "no-reply@exampleops.test",
+    "seed_superadmin_email": "superadmin@exampleops.test"
+  },
+  "ui": {
+    "page_title_suffix": "Knowledge Hub",
+    "auth_description": "Sign in to your document intelligence workspace."
+  }
+}

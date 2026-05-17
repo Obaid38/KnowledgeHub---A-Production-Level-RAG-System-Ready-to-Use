@@ -1,0 +1,101 @@
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# AI server — standalone RunPod compose (ai_server only)
+#
+# For full-stack RunPod deployment (recommended), use:
+#   InsightHub/docker-compose.runpod.yml
+#
+# Usage (from InsightHub/ai_server/ directory):
+#   cp .env.runpod .env          # fill in REPLACE_WITH_* first
+#   docker compose -f docker-compose.runpod.yml up -d --build
+#
+# After the stack is up, pull Ollama models (first boot only):
+#   docker compose -f docker-compose.runpod.yml exec ollama ollama pull nomic-embed-text
+#   docker compose -f docker-compose.runpod.yml exec ollama ollama pull llama3.1:8b
+#   docker compose -f docker-compose.runpod.yml exec ollama ollama pull qwen3:32b
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+services:
+
+  # ── Infrastructure ──────────────────────────────────────────────────────────
+
+  redis:
+    image: redis:7-alpine
+    restart: always
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      retries: 5
+
+  qdrant:
+    image: qdrant/qdrant:v1.12.0
+    restart: always
+    volumes:
+      - qdrantdata:/qdrant/storage
+
+  minio:
+    image: minio/minio:latest
+    restart: always
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ACCESS_KEY}
+      MINIO_ROOT_PASSWORD: ${MINIO_SECRET_KEY}
+    volumes:
+      - miniodata:/data
+
+  ollama:
+    image: ollama/ollama:latest
+    restart: always
+    volumes:
+      - ollamamodels:/root/.ollama
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sf http://localhost:11434/api/version || exit 1"]
+      interval: 10s
+      retries: 10
+      start_period: 30s
+
+  # ── AI Server ──────────────────────────────────────────────────────────────
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    env_file: .env
+    ports:
+      - "8000:8000"
+    depends_on:
+      redis:    { condition: service_healthy }
+      qdrant:   { condition: service_started }
+      minio:    { condition: service_started }
+      ollama:   { condition: service_healthy }
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000
+
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    env_file: .env
+    depends_on:
+      redis:    { condition: service_healthy }
+      ollama:   { condition: service_healthy }
+    command: celery -A app.celery_app worker --loglevel=info -Q document_processing,embeddings -c 2
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+volumes:
+  qdrantdata:
+  miniodata:
+  ollamamodels:

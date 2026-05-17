@@ -1,0 +1,42 @@
+{{> _header}}
+
+<div style="max-width: 600px; margin: 0 auto; padding: 20px; font-family: Arial, sans-serif;">
+  <h2 style="color: #28a745; text-align: center;">Account Verified Successfully!</h2>
+  
+  <p style="color: #666; font-size: 16px; line-height: 1.5;">
+    Hello {{name}},
+  </p>
+  
+  <p style="color: #666; font-size: 16px; line-height: 1.5;">
+    Great news! Your account has been verified by our administrator. You can now access all features of our platform.
+  </p>
+  
+  <div style="background-color: #d4edda; border: 1px solid #c3e6cb; border-radius: 8px; padding: 20px; margin: 20px 0;">
+    <h3 style="color: #155724; margin: 0 0 10px 0;">✅ Account Status: Verified</h3>
+    <p style="color: #155724; margin: 0; font-size: 14px;">
+      Verified on: {{verified_date}}
+    </p>
+  </div>
+  
+  <p style="color: #666; font-size: 16px; line-height: 1.5;">
+    You can now:
+  </p>
+  <ul style="color: #666; font-size: 14px; line-height: 1.5;">
+    <li>Log in to your account</li>
+    <li>Access all platform features</li>
+    <li>Complete your profile setup</li>
+    <li>Start using our services</li>
+  </ul>
+  
+  <div style="text-align: center; margin: 30px 0;">
+    <a href="{{login_url}}" style="background-color: #007bff; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; display: inline-block; font-weight: bold;">
+      Login to Your Account
+    </a>
+  </div>
+  
+  <p style="color: #666; font-size: 14px; line-height: 1.5;">
+    If you have any questions or need assistance, please don't hesitate to contact our support team.
+  </p>
+</div>
+
+{{> _footer}}

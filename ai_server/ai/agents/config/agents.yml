@@ -1,0 +1,100 @@
+# =================================================================
+#  ai/agents/config/agents.yml
+#  Runtime model names, thresholds, and timeouts only.
+#  Company branding and domain vocabulary come from config/company_profile.json.
+#
+#  To switch environments: change model_name fields only and restart.
+# =================================================================
+
+domain_gate:
+  # Deterministic - no model used. Tune thresholds here if too many
+  # borderline queries are escalating to Stage 1 unnecessarily.
+  strong_in_domain_threshold: 0.15
+  strong_out_domain_threshold: 0.40
+  min_token_length: 3
+
+query_understanding:
+  provider: "ollama"
+  model_name: "llama3.1:8b"        # LOCAL CPU fallback: "gemma3:1B"
+  temperature: 0.0                 # keep 0.0 - classification must be deterministic
+  max_tokens: 200
+  timeout_seconds: 60              # LOCAL CPU fallback: 90
+  fallback_behavior: "default_in_domain"
+
+context_mode:
+  provider: "ollama"
+  model_name: "llama3.1:8b"        # LOCAL CPU fallback: "gemma3:1B"
+  temperature: 0.0                 # keep 0.0 - classification must be deterministic
+  max_tokens: 100
+  timeout_seconds: 60              # LOCAL CPU fallback: 90
+  fallback_behavior: "default_standalone"
+
+reformulator:
+  provider: "ollama"
+  model_name: "llama3.1:8b"        # LOCAL CPU fallback: "gemma3:1B"
+  temperature: 0.3                 # slight creativity for natural rewriting - keep as-is
+  max_tokens: 250
+  timeout_seconds: 60              # LOCAL CPU fallback: 90
+  fallback_behavior: "passthrough"
+
+retrieval_planner:
+  provider: "ollama"
+  model_name: "llama3.1:8b"        # Keep aligned with routing agents unless overridden.
+  temperature: 0.0                 # JSON planning must be deterministic.
+  max_tokens: 900
+  timeout_seconds: 60
+  fallback_behavior: "passthrough_single_query"
+
+confidence_gate:
+  # When RERANKER_ENABLED=true, top_score is the reranker score.
+  default_threshold: 0.4
+  thresholds_by_style:
+    direct: 0.4
+    procedural: 0.4
+    comparative: 0.3
+    exploratory: 0.3
+
+prompt_assembly:
+  vocabulary_block_enabled: false
+  # max_chunks_in_prompt is the fallback used when the query style has no entry
+  # in max_chunks_by_style, or when max_chunks_by_style is not configured.
+  max_chunks_in_prompt: 10
+  # Per-style chunk caps - how many chunks Step 3 sends to the LLM.
+  max_chunks_by_style:
+    direct: 10
+    procedural: 15
+    exploratory: 20
+    comparative: 15
+  source_header_template: "[SOURCE {n}]"
+  default_style: "exploratory"
+
+answer_generator:
+  model_name: "qwen3:32b"          # LOCAL CPU fallback: "gemma3:1b"
+  # Lower latency alternative: "qwen3:30b"
+  # For qwen3-style thinking models, Step 4 uses Ollama native /api/chat with
+  # think=false. The OpenAI-compatible /v1 endpoint may still emit reasoning.
+  ollama_base_url: "http://localhost:11434"
+  # RunPod Docker internal swap: ollama_base_url: "http://ollama:11434"
+  # External Ollama/vLLM endpoint swap: ollama_base_url: "http://<runpod-ip>:11434"
+  timeout_seconds: 180              # LOCAL CPU fallback: 120
+  temperature: 0.3
+  max_tokens: 2048
+  no_think_enabled: true
+  no_think_model_prefixes:
+    - "qwen3"
+    - "qwen3.5"
+
+citation_builder:
+  staleness_threshold_days: 180
+  max_citations_in_response: 5
+
+faithfulness_check:
+  penalty_low: 0.10
+  penalty_high: 0.20
+  enabled: true
+
+session_store:
+  ttl_seconds: 3600
+  max_turns_in_window: 4
+  key_prefix: "session:v1:"
+  enabled: true
